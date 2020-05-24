@@ -7,18 +7,19 @@ import "ace-builds/src-noconflict/theme-github";
 import { withRouter } from "react-router-dom";
 
 const IDE = withRouter((props) => {
-  const file = props.location.state.file
-  console.log(file)
+  const file = props.location.state.file;
+  console.log(file);
   function onChange(newValue) {
     console.log("change", newValue);
   }
   return (
     <div className="App">
       <header className="App-header">
+        <p>{file.name}</p>
         <AceEditor
           mode="java"
           theme="github"
-          value={file}
+          value={file.contents}
           onChange={onChange}
           name="UNIQUE_ID_OF_DIV"
           editorProps={{ $blockScrolling: true }}
@@ -27,4 +28,4 @@ const IDE = withRouter((props) => {
     </div>
   );
 });
-export default IDE
+export default IDE;
